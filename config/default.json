@@ -1,0 +1,5 @@
+{
+  "port": 5000,
+  "jwtSecret": "danila mouse database",
+  "mongoUri": "mongodb://danila:sulabohDaiwah5ieceo7ahrahchai7wi@ams.oo2.be:27017/daniladb"
+}
