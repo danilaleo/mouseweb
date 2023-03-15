@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs')
 const config = require('config')
 const jwt = require('jsonwebtoken')
 const {check, validationResult} = require('express-validator')
-const User = require('./models/User')
+const User = require('../models/User')
 const router = Router()
 
 // /api/auth/register
@@ -45,8 +45,8 @@ router.post('/registr',
 router.post(
     '/login',
     [
-        check(email, 'Введите корректный email').normalizeEmail().isEmail(),
-        check('password', 'Введите пароль').exist()
+        check('email', 'Введите корректный email').normalizeEmail().isEmail(),
+        check('password', 'Введите пароль').exists()
     ],
     async (req, res) => {
         try {
