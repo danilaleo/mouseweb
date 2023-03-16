@@ -75,8 +75,6 @@ router.post(
 
             res.json({ token, userId: user.id })
 
-
-
         } catch (e) {
             res.status(500).json({message: 'Атака захлебнулась, попробуйте еще раз'})
         }
