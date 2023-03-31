@@ -1,32 +1,34 @@
-import React from "react"
-import {Route, Navigate} from 'react-router-dom'
-import {LinksPage} from "./pages/LinksPage"
-import {CreatePage} from "./pages/CreatePage"
-import {AuthPage} from "./pages/AuthPage"
-import {DetailPage} from "./pages/DetailPage"
+import React, { Fragment } from "react"
+import { Route, Navigate } from 'react-router-dom'
+import { LinksPage } from "./pages/LinksPage"
+import { CreatePage } from "./pages/CreatePage"
+import { AuthPage } from "./pages/AuthPage"
+import { DetailPage } from "./pages/DetailPage"
 
 export const useRoutes = isAuthenticated => {
     if (isAuthenticated) {
         return (
-            <>
+            <Fragment>
                 <Route path="/links" exact>
-                    <LinksPage/>
+                    <LinksPage />
                 </Route>
                 <Route path="/create" exact>
-                    <CreatePage/>
+                    <CreatePage />
                 </Route>
                 <Route path="/detail/:id" exact>
-                    <DetailPage/>
+                    <DetailPage />
                 </Route>
-                <Navigate to="/create" />
-                    <LinksPage/>
-            </>
+                <Route path="/">
+                    <Navigate to="/create" replace />
+                    <LinksPage />
+                </Route>
+            </Fragment>
         )
     }
     return (
-        <>
-            <Route path="/" element = {<AuthPage />}/>
-            <Route path="*" element = {<Navigate to ="/" />}/>
-        </>
+        <Fragment>
+            <Route path="/" element={<AuthPage />} />
+            <Route path="*" element={<Navigate to="/" />} />
+        </Fragment>
     )
 }
